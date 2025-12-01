@@ -1,0 +1,28 @@
+﻿# MODÈLES BERT (TROP GROS POUR GITHUB)
+*.safetensors
+*.bin
+*.pth
+*.h5
+*.weights
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Fog Security</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>📊 Dashboard Fog Security</h1>
+                <p>Monitoring Temps Réel du Système Distribué</p>
+            </div>
+            <div class="header-right">
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-dot connecting"></span>
+                    <span class="status-text">Connexion en cours...</span>
+                </div>
+                <a href="index.html" class="back-button">🏠 Accueil</a>
+                <div class="last-update">
+                    Dernière mise à jour: <span id="updateTime">--:--:--</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <main class="dashboard-main">
+            <!-- Row 1: Overview Cards -->
+            <div class="dashboard-row">
+                <div class="metric-card">
+                    <div class="metric-icon">📈</div>
+                    <div class="metric-info">
+                        <h3>Logs Traités</h3>
+                        <div class="metric-value" id="totalLogs">0</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">🚨</div>
+                    <div class="metric-info">
+                        <h3>Attaques Détectées</h3>
+                        <div class="metric-value" id="totalAttacks">0</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">⚡</div>
+                    <div class="metric-info">
+                        <h3>Logs/Sec</h3>
+                        <div class="metric-value" id="logsPerSecond">0</div>
+                    </div>
+                </div>
+
+          
+            </div>
+
+            <!-- Row 2: Workers Status & Attack Types -->
+            <div class="dashboard-row">
+                <div class="card workers-card">
+                    <h2>👥 Statut des Workers</h2>
+                    <div class="workers-grid" id="workersGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="card attacks-card">
+                    <h2>🎯 Types d'Attaques Détectées</h2>
+                    <div class="attack-types" id="attackTypes">
+                        <div class="attack-type">
+                            <div class="attack-info">
+                                <span class="attack-name">SQL Injection</span>
+                                <span class="attack-count" id="sqlCount">0</span>
+                            </div>
+                            <div class="attack-bar">
+                                <div class="attack-fill sql" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="attack-type">
+                            <div class="attack-info">
+                                <span class="attack-name">XSS</span>
+                                <span class="attack-count" id="xssCount">0</span>
+                            </div>
+                            <div class="attack-bar">
+                                <div class="attack-fill xss" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="attack-type">
+                            <div class="attack-info">
+                                <span class="attack-name">Command Injection</span>
+                                <span class="attack-count" id="cmdCount">0</span>
+                            </div>
+                            <div class="attack-bar">
+                                <div class="attack-fill cmd" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="attack-type">
+                            <div class="attack-info">
+                                <span class="attack-name">Path Traversal</span>
+                                <span class="attack-count" id="pathCount">0</span>
+                            </div>
+                            <div class="attack-bar">
+                                <div class="attack-fill path" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="attack-type">
+                            <div class="attack-info">
+                                <span class="attack-name">Suspicious UA</span>
+                                <span class="attack-count" id="uaCount">0</span>
+                            </div>
+                            <div class="attack-bar">
+                                <div class="attack-fill ua" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: Recent Attacks & Performance -->
+            <div class="dashboard-row">
+                <div class="card attacks-log-card">
+                    <div class="card-header">
+                        <h2>🚨 Dernières Attaques Détectées</h2>
+                        <button class="refresh-btn" onclick="refreshData()">🔄 Actualiser</button>
+                    </div>
+                    <div class="attacks-log" id="recentAttacks">
+                    </div>
+                </div>
+
+                <div class="card performance-card">
+                    <h2>⚡ Performance du Système</h2>
+                    <div class="performance-stats">
+                        <div class="perf-stat">
+                            <label>Temps moyen de traitement:</label>
+                            <span id="avgProcessingTime">0ms</span>
+                        </div>
+                        <div class="perf-stat">
+                            <label>Efficacité Load Balancing:</label>
+                            <span id="loadBalanceEfficiency">0%</span>
+                        </div>
+                        <div class="perf-stat">
+                            <label>Uptime du système:</label>
+                            <span id="systemUptime">0h 0m</span>
+                        </div>
+                        <div class="perf-stat">
+                            <label>Logs en attente:</label>
+                            <span id="pendingLogs">0</span>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

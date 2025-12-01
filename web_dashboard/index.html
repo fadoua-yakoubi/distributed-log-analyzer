@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fog Security - Accueil</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🌫️ Fog Security</h1>
+                <p>Système Distribué de Détection d'Attaques</p>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Analyse Intelligente des Logs en Temps Réel</h2>
+                <p>Notre système Fog Computing utilise l'IA pour détecter les cyberattaques avec une latence réduite et une efficacité maximale.</p>
+                <div class="hero-buttons">
+                    <a href="dashboard.html" class="cta-button primary">🚀 Accéder au Dashboard</a>
+                    <button class="cta-button secondary" onclick="launchSystem()">⚡ Lancer le Système</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Traitement Distribué</h3>
+                    <p>Répartition intelligente de la charge entre plusieurs workers pour une analyse parallèle optimale.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>IA BERT Spécialisé</h3>
+                    <p>Modèle de machine learning fine-tuné pour détecter SQLi, XSS, injections de commandes et autres attaques.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Monitoring Temps Réel</h3>
+                    <p>Surveillance en direct de tous les composants du système avec métriques détaillées.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Détection Avancée</h3>
+                    <p>Identification des menaces zero-day grâce à l'analyse sémantique contextuelle.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section class="architecture">
+            <h2>Architecture du Système</h2>
+            <div class="arch-diagram">
+                <!-- Master Node -->
+                <div class="arch-node master">
+                    <div class="node-icon">🎯</div>
+                    <h4>Master</h4>
+                    <p>Coordination & Load Balancing</p>
+                    <div class="node-role">
+                        <span class="role-badge">Génération Logs</span>
+                        <span class="role-badge">Distribution</span>
+                    </div>
+                </div>
+                
+                <!-- Double flèche Master ↔ Workers -->
+                <div class="arch-connector bidirectional">
+                    <div class="arrow-up">↑</div>
+                    <div class="connector-line"></div>
+                    <div class="arrow-down">↓</div>
+                    <div class="connector-label">
+                        <span class="label-up">Résultats & Métriques</span>
+                        <span class="label-down">Travail & Logs</span>
+                    </div>
+                </div>
+                
+                <!-- Workers -->
+                <div class="arch-workers">
+                    <div class="arch-node worker">
+                        <div class="node-icon">🔧</div>
+                        <h4>Worker 1</h4>
+                        <p>Analyse & Entraînement</p>
+                        <div class="node-role">
+                            <span class="role-badge">Détection</span>
+                            <span class="role-badge">IA BERT</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-node worker">
+                        <div class="node-icon">🔧</div>
+                        <h4>Worker 2</h4>
+                        <p>Analyse & Entraînement</p>
+                        <div class="node-role">
+                            <span class="role-badge">Détection</span>
+                            <span class="role-badge">IA BERT</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Communication bidirectionnelle -->
+                <div class="communication-flow">
+                    <div class="flow-item">
+                        <div class="flow-arrow request">➡</div>
+                        <div class="flow-label">Requête de travail</div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-arrow response">⬅</div>
+                        <div class="flow-label">Résultats d'analyse</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Légende -->
+            <div class="architecture-legend">
+                <div class="legend-item">
+                    <div class="legend-color request"></div>
+                    <span>Requête Master → Worker</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color response"></div>
+                    <span>Réponse Worker → Master</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Fog Security - Projet d'Analyse Distribuée</p>
+        </footer>
+    </div>
+
+    <script>
+        function launchSystem() {
+            console.log('🚀 Lancement du système Fog Security...');
+            
+            showNotification('Système Fog Security en cours de démarrage...', 'success');
+            
+            setTimeout(() => {
+                showNotification('✅ Système démarré avec succès! Les workers sont maintenant opérationnels.', 'success');
+            }, 2000);
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <span class="notification-icon">${type === 'success' ? '✅' : 'ℹ️'}</span>
+                    <span class="notification-message">${message}</span>
+                </div>
+            `;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? 'var(--success-color)' : 'var(--info-color)'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideInRight 0.3s ease;
+                max-width: 400px;
+                border-left: 4px solid ${type === 'success' ? '#27ae60' : '#3498db'};
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .notification-icon {
+                font-size: 1.2rem;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
