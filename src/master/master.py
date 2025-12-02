@@ -12,8 +12,10 @@ CORS(app)
 WORKERS = [
     #worker 1 :
     "https://unlikably-unremissible-yamileth.ngrok-free.dev/process_log",
-     #worker 2 :
+    #worker 2 :
     "https://nonduplicative-monet-vividly.ngrok-free.dev/process_log", 
+    #test en local
+      #"http://127.0.0.1:5001/process_log"
 
 
  ]
@@ -30,14 +32,14 @@ def send_log_internal(log):
     worker_url = WORKERS[counter % len(WORKERS)]
     counter += 1
 
-    print(f"📤 Envoi du log au worker {worker_url}")
+    print(f" Envoi du log au worker {worker_url}")
     print(f"   Type réel: {log.get('real_category', 'N/A')}")
 
     try:
         response = requests.post(worker_url, json=log, timeout=10)
 
         if response.status_code == 200:
-            print("   ✅  Log envoyé avec succès")
+            print("    Log envoyé avec succès")
             logs_history.append({
                 "log": log,
                 "worker": worker_url,
@@ -45,10 +47,10 @@ def send_log_internal(log):
             })
 
         else:
-            print(f"   ❌ Erreur worker: {response.status_code}")
+            print(f"  Erreur worker: {response.status_code}")
 
     except Exception as e:
-        print(f"   ❌ Erreur d'envoi: {str(e)}")
+        print(f"    Erreur d'envoi: {str(e)}")
 
     return worker_url
     
@@ -93,7 +95,7 @@ def send_log_route():
 @app.route("/receive_result", methods=["POST"])
 def receive_result():
     result = request.json
-    print(f"📥 Résultat reçu du worker : {result}")
+    print(f" Résultat reçu du worker : {result}")
 
     # Mise à jour de l'historique
     for entry in logs_history:
@@ -118,7 +120,7 @@ def index():
 # MAIN
 if __name__ == "__main__":
     print("="*100)
-    print("🎯 MASTER ACTIF - Distribution automatique des logs + réception résultats")
+    print(" MASTER ACTIF - Distribution automatique des logs + réception résultats")
     print("="*100)
     print("Serveur : http://127.0.0.1:5000")
     print(f"Workers : {WORKERS}")

@@ -11,22 +11,23 @@ import time
 app = Flask(__name__)
 
 # Configuration
-MASTER_URL = "https://429fe9db8786.ngrok-free.app/receive_result"
+#MASTER_URL = "https://429fe9db8786.ngrok-free.app/receive_result"
 # test en local
-#MASTER_URL = "http://127.0.0.1:5000/receive_result"  
+MASTER_URL = "http://127.0.0.1:5000/receive_result"  
 
 # CHARGEMENT DU MODÈLE BERT
+# le chemin du modèle doit être adapté selon l'arbororescence de projet
 try:
-    training_args_path = '../../model/bert_log_detector/training_args.bin'
+    training_args_path = 'C:/Users/fadou/OneDrive/Documents/Projet Fog Computing/distributed-log-analyzer/model/bert_log_detector/training_args.bin'
     if os.path.exists(training_args_path):
         os.rename(training_args_path, training_args_path + '.backup')
         print( "training_args.bin renommé")
     
-    tokenizer = AutoTokenizer.from_pretrained('../../model/bert_log_detector/')
+    tokenizer = AutoTokenizer.from_pretrained('C:/Users/fadou/OneDrive/Documents/Projet Fog Computing/distributed-log-analyzer/model/bert_log_detector/')
     print(" Tokenizer chargé")
     
     model = AutoModelForSequenceClassification.from_pretrained(
-        '../model/bert_log_detector/',
+        'C:/Users/fadou/OneDrive/Documents/Projet Fog Computing/distributed-log-analyzer/model/bert_log_detector/',
         local_files_only=True
     )
     model.to('cpu')
